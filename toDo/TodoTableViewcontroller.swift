@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  TodoTableViewcontroller.swift
 //  toDo
 //
 //  Created by Abdul Diallo on 1/11/20.
 //  Copyright © 2020 Abdul Diallo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class ViewController: UIViewController {
+class TodoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,4 +17,3 @@ class ViewController: UIViewController {
 
 
 }
-
