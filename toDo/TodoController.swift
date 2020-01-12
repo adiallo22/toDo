@@ -26,6 +26,10 @@ class TodoController: UITableViewController {
         cell.textLabel?.text = things[indexPath.row]
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+    }
 
 }
 

@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo Controller-->
+        <!--To Do-->
         <scene sceneID="AFr-by-zvy">
             <objects>
                 <tableViewController id="VAv-53-bOF" customClass="TodoController" customModule="toDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,7 +29,7 @@
                             <outlet property="delegate" destination="VAv-53-bOF" id="DBj-MA-6HK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bvq-8g-uEj"/>
+                    <navigationItem key="navigationItem" title="To Do" id="bvq-8g-uEj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSd-6W-zbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,6 +43,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iTz-tm-DEm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59261988219999995" green="1" blue="0.70641966749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
