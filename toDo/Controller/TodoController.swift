@@ -10,11 +10,22 @@ import UIKit
 
 class TodoController: UITableViewController {
     
-    var things = ["go to gym", "make $$", "enjoy my bday", "work on my project", "cook"]
+    var things = [Item]()
+    
+    var defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //if let items = defaults.array(forKey: "todoList") as? [String] {
+        let newItem = Item()
+        newItem.title = "demo"
+        things.append(newItem)
+        things.append(newItem)
+        things.append(newItem)
+        things.append(newItem)
+        things.append(newItem)
+        things.append(newItem)
     }
     
     //MARK: - table view data source protocol
@@ -24,20 +35,28 @@ class TodoController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        cell.textLabel?.text = things[indexPath.row]
+        let item = things[indexPath.row]
+        cell.textLabel?.text = item.title
         return cell
+        
     }
     
     //MARK: - table view delegate protocol
        
        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+            //change the property done whenever the user select the cell
+            things[indexPath.row].done = !things[indexPath.row].done
+           // tableView.reloadData()
            if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-               tableView.cellForRow(at: indexPath)?.accessoryType = .none
+              tableView.cellForRow(at: indexPath)?.accessoryType = .none
            } else {
-               tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
            }
            tableView.deselectRow(at: indexPath, animated: true)
+        
        }
     
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
@@ -46,7 +65,9 @@ class TodoController: UITableViewController {
         
         let alert = UIAlertController(title: "Add new Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.things.append(toBeAdded.text!)
+            let newItem = Item()
+            newItem.title = toBeAdded.text!
+            self.things.append(newItem)
             self.tableView.reloadData()
         }
         alert.addAction(action)
