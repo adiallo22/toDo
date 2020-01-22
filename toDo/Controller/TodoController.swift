@@ -19,9 +19,7 @@ class TodoController: UITableViewController {
         // Do any additional setup after loading the view.
         
         
-       // if let items = defaults.array(forKey: "todoList") as? [Item] {
-            //things = items
-       // }
+       load()
     }
     
     //MARK: - table view data source protocol
@@ -88,10 +86,21 @@ class TodoController: UITableViewController {
             //write the data into our dataf file path
             try data.write(to: dataFilePath!)
         } catch {
-            
+            print("error : \(error)")
         }
         self.tableView.reloadData()
         
+    }
+    
+    func load() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                things = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("error : \(error)")
+            }
+        }
     }
     
 }
