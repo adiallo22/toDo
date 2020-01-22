@@ -12,20 +12,16 @@ class TodoController: UITableViewController {
     
     var things = [Item]()
     
-    var defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("things.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //if let items = defaults.array(forKey: "todoList") as? [String] {
-        let newItem = Item()
-        newItem.title = "demo"
-        things.append(newItem)
-        things.append(newItem)
-        things.append(newItem)
-        things.append(newItem)
-        things.append(newItem)
-        things.append(newItem)
+        
+        
+       // if let items = defaults.array(forKey: "todoList") as? [Item] {
+            //things = items
+       // }
     }
     
     //MARK: - table view data source protocol
@@ -37,8 +33,11 @@ class TodoController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        //retrieve data from the things @ current row and store it in item
         let item = things[indexPath.row]
+        //insert title of item in the cell
         cell.textLabel?.text = item.title
+        //cell.accessoryType = item.done ? .checkmark : .none
         return cell
         
     }
@@ -49,7 +48,7 @@ class TodoController: UITableViewController {
         
             //change the property done whenever the user select the cell
             things[indexPath.row].done = !things[indexPath.row].done
-           // tableView.reloadData()
+            save()
            if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
               tableView.cellForRow(at: indexPath)?.accessoryType = .none
            } else {
@@ -64,18 +63,34 @@ class TodoController: UITableViewController {
         var toBeAdded = UITextField()
         
         let alert = UIAlertController(title: "Add new Item", message: "", preferredStyle: .alert)
+        alert.addTextField { (alert) in
+            alert.placeholder = "Enter item here"
+            toBeAdded = alert
+        }
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             let newItem = Item()
             newItem.title = toBeAdded.text!
             self.things.append(newItem)
             self.tableView.reloadData()
+            self.save()
+            
         }
         alert.addAction(action)
-        alert.addTextField { (alert) in
-            alert.placeholder = "Enter item here"
-            toBeAdded = alert
-        }
         present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func save() {
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(self.things)
+            //write the data into our dataf file path
+            try data.write(to: dataFilePath!)
+        } catch {
+            
+        }
+        self.tableView.reloadData()
         
     }
     
