@@ -7,19 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoController: UITableViewController {
     
     var things = [Item]()
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("things.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        load()
         
-       load()
     }
     
     //MARK: - table view data source protocol
@@ -31,7 +32,7 @@ class TodoController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        //retrieve data from the things @ current row and store it in item
+        //retrieve data from the things @ current row
         let item = things[indexPath.row]
         //insert title of item in the cell
         cell.textLabel?.text = item.title
@@ -47,14 +48,16 @@ class TodoController: UITableViewController {
             //change the property done whenever the user select the cell
             things[indexPath.row].done = !things[indexPath.row].done
             save()
-           if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-              tableView.cellForRow(at: indexPath)?.accessoryType = .none
-           } else {
+            if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+                tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            } else {
                 tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-           }
-           tableView.deselectRow(at: indexPath, animated: true)
+            }
+            tableView.deselectRow(at: indexPath, animated: true)
         
        }
+    
+    //MARK: - action
     
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         
@@ -66,8 +69,9 @@ class TodoController: UITableViewController {
             toBeAdded = alert
         }
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newItem = Item()
+            let newItem = Item(context: self.context)
             newItem.title = toBeAdded.text!
+            newItem.done = false
             self.things.append(newItem)
             self.tableView.reloadData()
             self.save()
@@ -78,13 +82,12 @@ class TodoController: UITableViewController {
         
     }
     
+    //MARK: - <#section heading#>
+    
     func save() {
         
         do {
-            let encoder = PropertyListEncoder()
-            let data = try encoder.encode(self.things)
-            //write the data into our dataf file path
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
             print("error : \(error)")
         }
@@ -93,14 +96,14 @@ class TodoController: UITableViewController {
     }
     
     func load() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                things = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("error : \(error)")
-            }
+        
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            things = try context.fetch(request)
+        } catch {
+            print("error - \(error)")
         }
+        
     }
     
 }
