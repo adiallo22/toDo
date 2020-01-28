@@ -19,8 +19,7 @@ class TodoController: UITableViewController {
         
         super.viewDidLoad()
         
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        load(with: request)
+        load()
         
     }
     
