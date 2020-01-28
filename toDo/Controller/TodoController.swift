@@ -19,7 +19,8 @@ class TodoController: UITableViewController {
         
         super.viewDidLoad()
         
-        load()
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        load(with: request)
         
     }
     
@@ -95,14 +96,27 @@ class TodoController: UITableViewController {
         
     }
     
-    func load() {
+    func load(with request : NSFetchRequest<Item> = Item.fetchRequest()) {
         
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
         do {
             things = try context.fetch(request)
+            tableView.reloadData()
         } catch {
             print("error - \(error)")
         }
+        
+    }
+    
+}
+
+extension TodoController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        load(with: request)
         
     }
     
