@@ -12,7 +12,6 @@ import CoreData
 class CTableViewController: UITableViewController {
     
     var categories = [Category]()
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -35,6 +34,7 @@ class CTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cathegoryCell", for: indexPath)
         let cathegory = categories[indexPath.row]
         cell.textLabel?.text = cathegory.name
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cathegoryCell")
         return cell
         
     }
@@ -53,9 +53,7 @@ class CTableViewController: UITableViewController {
         
     }
     
-    func load(with request: NSFetchRequest<Category>){
-        
-        request = Category.fetchRequest()
+    func load(with request: NSFetchRequest<Category> = Category.fetchRequest()){
         
         do {
             try context.fetch(request)
@@ -77,9 +75,14 @@ class CTableViewController: UITableViewController {
             tobeAdded = alert
         }
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
-            var newCategory = Category(context: self.context)
+            let newCategory = Category(context: self.context)
+            newCategory.name = tobeAdded.text
+            self.categories.append(newCategory)
+            self.tableView.reloadData()
+            self.save()
         }
-        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
         
     }
     

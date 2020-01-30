@@ -108,6 +108,8 @@ class TodoController: UITableViewController {
     
 }
 
+//MARK: - search bar
+
 extension TodoController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
