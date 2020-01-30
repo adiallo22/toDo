@@ -18,7 +18,6 @@ class CTableViewController: UITableViewController {
         
         super.viewDidLoad()
         load()
-        
     }
 
     // MARK: - Table view data source
@@ -34,12 +33,26 @@ class CTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cathegoryCell", for: indexPath)
         let cathegory = categories[indexPath.row]
         cell.textLabel?.text = cathegory.name
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cathegoryCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cathegoryCell")
         return cell
         
     }
+    
 
     //MARK: - table view delegate
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoController
+        if let indexpath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexpath.row]
+        }
+    }
+    
     
     //MARK: - section heading
     func save() {
@@ -47,23 +60,23 @@ class CTableViewController: UITableViewController {
         do {
             try context.save()
         } catch {
-            print("error - \(error)")
+            print("error : \(error)")
         }
-        tableView.reloadData()
+        self.tableView.reloadData()
         
     }
     
-    func load(with request: NSFetchRequest<Category> = Category.fetchRequest()){
+    func load(with request : NSFetchRequest<Category> = Category.fetchRequest()) {
         
         do {
-            try context.fetch(request)
+            categories = try context.fetch(request)
+            tableView.reloadData()
         } catch {
             print("error - \(error)")
         }
-        tableView.reloadData()
         
     }
-    
+
     //MARK: - action
 
     @IBAction func addToDo(_ sender: UIBarButtonItem) {
@@ -74,7 +87,7 @@ class CTableViewController: UITableViewController {
             alert.placeholder = "Enter Category"
             tobeAdded = alert
         }
-        let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
             let newCategory = Category(context: self.context)
             newCategory.name = tobeAdded.text
             self.categories.append(newCategory)

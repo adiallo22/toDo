@@ -13,13 +13,17 @@ class TodoController: UITableViewController {
     
     var things = [Item]()
     
+    var selectedCategory : Category? {
+        didSet{
+            load()
+        }
+    }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        load()
         
     }
     
@@ -72,6 +76,7 @@ class TodoController: UITableViewController {
             let newItem = Item(context: self.context)
             newItem.title = toBeAdded.text!
             newItem.done = false
+            newItem.parentCategory = self.selectedCategory
             self.things.append(newItem)
             self.tableView.reloadData()
             self.save()
@@ -95,8 +100,15 @@ class TodoController: UITableViewController {
         
     }
     
-    func load(with request : NSFetchRequest<Item> = Item.fetchRequest()) {
+    func load(with request : NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil) {
         
+        let cPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        if let existingpredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate!, cPredicate])
+        } else {
+            request.predicate = cPredicate
+        }
+
         do {
             things = try context.fetch(request)
             tableView.reloadData()
@@ -115,9 +127,9 @@ extension TodoController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         let request : NSFetchRequest<Item> = Item.fetchRequest()
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        load(with: request)
+        load(with: request, predicate: predicate)
         
     }
     
