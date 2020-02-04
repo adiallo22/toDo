@@ -48,13 +48,19 @@ class TodoController: UITableViewController {
     //MARK: - table view delegate protocol
        
        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-            if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            } else {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        do {
+            try realm.write {
+                if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .none
+                } else {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                }
             }
-            tableView.deselectRow(at: indexPath, animated: true)
+        } catch {
+            print("error - \(error)")
+        }
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
         
        }
     
@@ -75,6 +81,7 @@ class TodoController: UITableViewController {
                     try self.realm.write {
                         let newItem = Item()
                         newItem.title = toBeAdded.text!
+                        newItem.date = Date()
                         curr.items.append(newItem)
                     }
                 } catch {
@@ -113,16 +120,14 @@ class TodoController: UITableViewController {
 }
 
 //MARK: - search bar
-/*
 
 extension TodoController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        load(with: request, predicate: predicate)
+        things = things?.filter("title CONTAINS[cd] %@", searchBar.text!)
+        things?.sorted(byKeyPath: "date", ascending: false)
+        tableView.reloadData()
         
     }
     
@@ -137,7 +142,7 @@ extension TodoController : UISearchBarDelegate {
         
     }
     
-}*/
+}
 
 
 
