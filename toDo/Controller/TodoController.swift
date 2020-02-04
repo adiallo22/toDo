@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class TodoController: UITableViewController {
     
-    var things = [Item]()
+    var things : Results<Item>?
+    
+    let realm = try! Realm()
     
     var selectedCategory : Category? {
         didSet{
             load()
         }
     }
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         
@@ -30,17 +30,17 @@ class TodoController: UITableViewController {
     //MARK: - table view data source protocol
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return things.count
+        return things?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        //retrieve data from the things @ current row
-        let item = things[indexPath.row]
-        //insert title of item in the cell
-        cell.textLabel?.text = item.title
-        //cell.accessoryType = item.done ? .checkmark : .none
+        if let item = things?[indexPath.row] {
+            cell.textLabel?.text = item.title
+        } else {
+            cell.textLabel?.text = "No Item"
+        }
         return cell
         
     }
@@ -49,9 +49,6 @@ class TodoController: UITableViewController {
        
        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            //change the property done whenever the user select the cell
-            things[indexPath.row].done = !things[indexPath.row].done
-            save()
             if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
                 tableView.cellForRow(at: indexPath)?.accessoryType = .none
             } else {
@@ -73,14 +70,19 @@ class TodoController: UITableViewController {
             toBeAdded = alert
         }
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newItem = Item(context: self.context)
-            newItem.title = toBeAdded.text!
-            newItem.done = false
-            newItem.parentCategory = self.selectedCategory
-            self.things.append(newItem)
+            if let curr = self.selectedCategory {
+                do {
+                    try self.realm.write {
+                        let newItem = Item()
+                        newItem.title = toBeAdded.text!
+                        curr.items.append(newItem)
+                    }
+                } catch {
+                    print("error - \(error)")
+                }
+                
+            }
             self.tableView.reloadData()
-            self.save()
-            
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
@@ -89,38 +91,29 @@ class TodoController: UITableViewController {
     
     //MARK: - <#section heading#>
     
-    func save() {
+    //func save(item: Item) {
         
-        do {
-            try context.save()
-        } catch {
-            print("error : \(error)")
-        }
-        self.tableView.reloadData()
-        
-    }
+        //do {
+            //try realm.write {
+                //realm.add(item)
+            //}
+       // } catch {
+          //  print("error : \(error)")
+       // }
+        //self.tableView.reloadData()
+   // }
     
-    func load(with request : NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil) {
+    func load() {
         
-        let cPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        if let existingpredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate!, cPredicate])
-        } else {
-            request.predicate = cPredicate
-        }
-
-        do {
-            things = try context.fetch(request)
-            tableView.reloadData()
-        } catch {
-            print("error - \(error)")
-        }
+        things = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        tableView.reloadData()
         
     }
     
 }
 
 //MARK: - search bar
+/*
 
 extension TodoController : UISearchBarDelegate {
     
@@ -144,7 +137,7 @@ extension TodoController : UISearchBarDelegate {
         
     }
     
-}
+}*/
 
 
 
