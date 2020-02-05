@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class TodoController: UITableViewController {
     
@@ -24,6 +25,7 @@ class TodoController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView.rowHeight = 78.0
         
     }
     
@@ -116,6 +118,8 @@ class TodoController: UITableViewController {
         tableView.reloadData()
         
     }
+    
+    
     
 }
 

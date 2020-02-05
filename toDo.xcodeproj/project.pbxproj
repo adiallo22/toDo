@@ -16,6 +16,7 @@
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
 		C0FF777823E46A7E009C3CCC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777723E46A7E009C3CCC /* Item.swift */; };
 		C0FF777A23E46B0B009C3CCC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777923E46B0B009C3CCC /* Category.swift */; };
+		C0FF777C23EA6AA4009C3CCC /* SuperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */; };
 		E69046935FC299CFD0D1ABC2 /* Pods_toDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B8FC6B82D7238B0B5B9585 /* Pods_toDo.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C0FF777923E46B0B009C3CCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +103,9 @@
 		C0665C8F23CEAB3A00F17420 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C0238AFC23CA50E800EB0769 /* TodoController.swift */,
+				C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */,
 				C0FF775023E12B76009C3CCC /* CTableViewController.swift */,
+				C0238AFC23CA50E800EB0769 /* TodoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */,
+				C0FF777C23EA6AA4009C3CCC /* SuperTableViewController.swift in Sources */,
 				C0238AFD23CA50E800EB0769 /* TodoController.swift in Sources */,
 				C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */,
 				C0FF777823E46A7E009C3CCC /* Item.swift in Sources */,

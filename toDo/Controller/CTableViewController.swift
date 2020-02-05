@@ -7,18 +7,18 @@
 //
 
 import UIKit
-//import CoreData
 import RealmSwift
+import SwipeCellKit
 
-class CTableViewController: UITableViewController {
+class CTableViewController: SuperTableViewController {
     
     var categories : Results<Category>?
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let realm = try! Realm()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView.rowHeight = 78.0
         load()
     }
 
@@ -30,16 +30,15 @@ class CTableViewController: UITableViewController {
         
     }
     
+    //cellforrow
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cathegoryCell", for: indexPath)
-        let cathegory = categories?[indexPath.row]
-        cell.textLabel?.text = cathegory?.name ?? "Empty Category"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cathegoryCell")
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "Empty Category"
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         return cell
         
     }
-    
 
     //MARK: - table view delegate
     
@@ -66,7 +65,7 @@ class CTableViewController: UITableViewController {
         } catch {
             print("error : \(error)")
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
         
     }
     
@@ -75,6 +74,19 @@ class CTableViewController: UITableViewController {
         categories = realm.objects(Category.self)
         tableView.reloadData()
         
+    }
+    
+    override func delete(at indexPath : IndexPath) {
+        if let tobedeleted = self.categories?[indexPath.row] {
+          do {
+              try self.realm.write {
+                  self.realm.delete(tobedeleted)
+              }
+          } catch{
+              print("error deleting - \(error)")
+          }
+          tableView.reloadData()
+          }
     }
 
     //MARK: - action
