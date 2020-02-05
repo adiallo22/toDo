@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 
-class TodoController: UITableViewController {
+class TodoController: SuperTableViewController {
     
     var things : Results<Item>?
     
@@ -37,7 +37,7 @@ class TodoController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = things?[indexPath.row] {
             cell.textLabel?.text = item.title
         } else {
@@ -119,7 +119,18 @@ class TodoController: UITableViewController {
         
     }
     
-    
+    override func delete(at indexPath : IndexPath) {
+        if let tobedeleted = self.things?[indexPath.row] {
+          do {
+              try self.realm.write {
+                  self.realm.delete(tobedeleted)
+              }
+          } catch{
+              print("error deleting - \(error)")
+          }
+          tableView.reloadData()
+          }
+    }
     
 }
 
