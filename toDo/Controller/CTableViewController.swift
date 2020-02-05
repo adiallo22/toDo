@@ -21,38 +21,6 @@ class CTableViewController: SuperTableViewController {
         tableView.rowHeight = 78.0
         load()
     }
-
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return categories?.count ?? 1
-        
-    }
-    
-    //cellforrow
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        cell.textLabel?.text = categories?[indexPath.row].name ?? "Empty Category"
-        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        return cell
-        
-    }
-
-    //MARK: - table view delegate
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToList", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TodoController
-        if let indexpath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories?[indexpath.row]
-        }
-    }
     
     
     //MARK: - section heading
@@ -109,6 +77,44 @@ class CTableViewController: SuperTableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
         
+    }
+    
+}
+
+//MARK: - <#section heading#>
+
+extension CTableViewController {
+    
+    // MARK: - Table view data source
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return categories?.count ?? 1
+        
+    }
+    
+    //cellforrow
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "Empty Category"
+        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        return cell
+        
+    }
+
+    //MARK: - table view delegate
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoController
+        if let indexpath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories?[indexpath.row]
+        }
     }
     
 }
