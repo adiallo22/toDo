@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import ChameleonFramework
 
 class CTableViewController: SuperTableViewController {
     
@@ -85,8 +86,7 @@ class CTableViewController: SuperTableViewController {
 
 extension CTableViewController {
     
-    // MARK: - Table view data source
-
+    //data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return categories?.count ?? 1
@@ -98,7 +98,7 @@ extension CTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categories?[indexPath.row].name ?? "Empty Category"
-        //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        cell.backgroundColor = UIColor.randomFlat()
         return cell
         
     }
