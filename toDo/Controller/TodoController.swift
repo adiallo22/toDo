@@ -13,6 +13,8 @@ import ChameleonFramework
 
 class TodoController: SuperTableViewController {
     
+    @IBOutlet weak var sreachBar: UISearchBar!
+    
     var things : Results<Item>?
     
     let realm = try! Realm()
@@ -27,13 +29,13 @@ class TodoController: SuperTableViewController {
         
         super.viewDidLoad()
         tableView.rowHeight = 78.0
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         guard let barNav = navigationController?.navigationBar else {
             fatalError("navigation bar does not exist")
         }
+        sreachBar.barTintColor = barNav.barTintColor
         navigationItem.title = selectedCategory?.name
     }
     
