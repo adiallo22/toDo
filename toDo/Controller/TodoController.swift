@@ -30,6 +30,13 @@ class TodoController: SuperTableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let barNav = navigationController?.navigationBar else {
+            fatalError("navigation bar does not exist")
+        }
+        navigationItem.title = selectedCategory?.name
+    }
+    
     //MARK: - table view data source protocol
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

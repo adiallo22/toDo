@@ -98,8 +98,12 @@ extension CTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let existCategory = categories?[indexPath.row] {
-            cell.textLabel?.text = existCategory.name ?? "Empty Category"
-            cell.backgroundColor = UIColor(hexString: existCategory.color ?? "")
+            guard let color = UIColor(hexString: existCategory.color) else {
+                fatalError("no color")
+            }
+            cell.textLabel?.text = existCategory.name
+            cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            cell.backgroundColor = color
         }
         return cell
         
