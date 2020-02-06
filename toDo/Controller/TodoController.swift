@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
-//import ChameleonFramework
+import ChameleonFramework
 
 class TodoController: SuperTableViewController {
     
@@ -41,6 +41,10 @@ class TodoController: SuperTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = things?[indexPath.row] {
             cell.textLabel?.text = item.title
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(Float(indexPath.row)/Float(things!.count))) {
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            }
         } else {
             cell.textLabel?.text = "No Item"
         }
