@@ -71,7 +71,7 @@ class CTableViewController: SuperTableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             let newCategory = Category()
             newCategory.name = tobeAdded.text!
-            //self.categories.append(newCategory)
+            newCategory.color = UIColor.randomFlat().hexValue()
             self.tableView.reloadData()
             self.save(category: newCategory)
         }
@@ -97,8 +97,10 @@ extension CTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        cell.textLabel?.text = categories?[indexPath.row].name ?? "Empty Category"
-        cell.backgroundColor = UIColor.randomFlat()
+        if let existCategory = categories?[indexPath.row] {
+            cell.textLabel?.text = existCategory.name ?? "Empty Category"
+            cell.backgroundColor = UIColor(hexString: existCategory.color ?? "")
+        }
         return cell
         
     }
