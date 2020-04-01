@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeCellKit
+import AOModalStatus
 
 class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegate {
     

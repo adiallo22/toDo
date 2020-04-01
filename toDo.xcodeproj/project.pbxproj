@@ -12,6 +12,8 @@
 		C0238B0023CA50E800EB0769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0238AFE23CA50E800EB0769 /* Main.storyboard */; };
 		C0238B0223CA50EB00EB0769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0238B0123CA50EB00EB0769 /* Assets.xcassets */; };
 		C0238B0523CA50EB00EB0769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0238B0323CA50EB00EB0769 /* LaunchScreen.storyboard */; };
+		C03DAAE12434F3F100FD780E /* AOModalStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; };
+		C03DAAE22434F3F100FD780E /* AOModalStatus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
 		C0FF777823E46A7E009C3CCC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777723E46A7E009C3CCC /* Item.swift */; };
@@ -19,6 +21,30 @@
 		C0FF777C23EA6AA4009C3CCC /* SuperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */; };
 		E69046935FC299CFD0D1ABC2 /* Pods_toDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B8FC6B82D7238B0B5B9585 /* Pods_toDo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C03DAADF2434F3DE00FD780E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 70AC95F31F8DC32F00960B51;
+			remoteInfo = AOModalStatus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C03DAAE32434F3F100FD780E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C03DAAE22434F3F100FD780E /* AOModalStatus.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6BD1DF01213E8DC014FD757B /* Pods-toDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toDo.debug.xcconfig"; path = "Target Support Files/Pods-toDo/Pods-toDo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -32,6 +58,8 @@
 		C0238B0123CA50EB00EB0769 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0238B0423CA50EB00EB0769 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0238B0623CA50EB00EB0769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C03DAADA2434F3D000FD780E /* AOModalStatusView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "AOModalStatusView-master"; path = "../../Downloads/AOModalStatusView-master"; sourceTree = "<group>"; };
+		C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AOModalStatus.xcodeproj; path = "../../Downloads/AOModalStatusView-master/AOModalStatus.xcodeproj"; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C0FF777923E46B0B009C3CCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -43,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03DAAE12434F3F100FD780E /* AOModalStatus.framework in Frameworks */,
 				E69046935FC299CFD0D1ABC2 /* Pods_toDo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +91,7 @@
 		C0238AEC23CA50E800EB0769 = {
 			isa = PBXGroup;
 			children = (
+				C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */,
 				C0238AF723CA50E800EB0769 /* toDo */,
 				C0238AF623CA50E800EB0769 /* Products */,
 				27380C74568693F70870DA07 /* Pods */,
@@ -90,6 +120,14 @@
 				C0238B0623CA50EB00EB0769 /* Info.plist */,
 			);
 			path = toDo;
+			sourceTree = "<group>";
+		};
+		C03DAADC2434F3DE00FD780E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C0665C8E23CEAB2F00F17420 /* View */ = {
@@ -122,6 +160,7 @@
 		FBC6041358F3620029B026B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C03DAADA2434F3D000FD780E /* AOModalStatusView-master */,
 				81B8FC6B82D7238B0B5B9585 /* Pods_toDo.framework */,
 			);
 			name = Frameworks;
@@ -139,6 +178,7 @@
 				C0238AF223CA50E800EB0769 /* Frameworks */,
 				C0238AF323CA50E800EB0769 /* Resources */,
 				CF4B430BDA3CE4559BE01F2B /* [CP] Embed Pods Frameworks */,
+				C03DAAE32434F3F100FD780E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -175,12 +215,28 @@
 			mainGroup = C0238AEC23CA50E800EB0769;
 			productRefGroup = C0238AF623CA50E800EB0769 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C03DAADC2434F3DE00FD780E /* Products */;
+					ProjectRef = C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C0238AF423CA50E800EB0769 /* toDo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AOModalStatus.framework;
+			remoteRef = C03DAADF2434F3DE00FD780E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C0238AF323CA50E800EB0769 /* Resources */ = {
