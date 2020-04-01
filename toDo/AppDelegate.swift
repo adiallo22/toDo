@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("error - \(error)")
         }
+        FirebaseApp.configure()
         return true
         
     }

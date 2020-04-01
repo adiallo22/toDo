@@ -9,5 +9,6 @@ target 'toDo' do
 pod 'RealmSwift'
 pod 'SwipeCellKit'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/viccalexander/Chameleon.git'
+pod 'Firebase/Analytics'
 
 end

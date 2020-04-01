@@ -15,6 +15,7 @@
 		C03DAAE12434F3F100FD780E /* AOModalStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; };
 		C03DAAE22434F3F100FD780E /* AOModalStatus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
+		C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C27AF72435173E008320BE /* GoogleService-Info.plist */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
 		C0FF777823E46A7E009C3CCC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777723E46A7E009C3CCC /* Item.swift */; };
 		C0FF777A23E46B0B009C3CCC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777923E46B0B009C3CCC /* Category.swift */; };
@@ -60,6 +61,7 @@
 		C0238B0623CA50EB00EB0769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C03DAADA2434F3D000FD780E /* AOModalStatusView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "AOModalStatusView-master"; path = "../../Downloads/AOModalStatusView-master"; sourceTree = "<group>"; };
 		C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AOModalStatus.xcodeproj; path = "../../Downloads/AOModalStatusView-master/AOModalStatus.xcodeproj"; sourceTree = "<group>"; };
+		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C0FF777923E46B0B009C3CCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				C0665C8F23CEAB3A00F17420 /* Controller */,
 				C0238B0123CA50EB00EB0769 /* Assets.xcassets */,
 				C0238B0323CA50EB00EB0769 /* LaunchScreen.storyboard */,
+				C0C27AF72435173E008320BE /* GoogleService-Info.plist */,
 				C0238B0623CA50EB00EB0769 /* Info.plist */,
 			);
 			path = toDo;
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0238B0523CA50EB00EB0769 /* LaunchScreen.storyboard in Resources */,
+				C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */,
 				C0238B0223CA50EB00EB0769 /* Assets.xcassets in Resources */,
 				C0238B0023CA50E800EB0769 /* Main.storyboard in Resources */,
 			);

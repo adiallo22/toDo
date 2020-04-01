@@ -16,7 +16,7 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .lightGray
     }
     
     //MARK: - data source delegate
