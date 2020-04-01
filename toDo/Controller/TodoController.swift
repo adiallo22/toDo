@@ -101,6 +101,7 @@ class TodoController: SuperTableViewController {
                         newItem.date = Date()
                         curr.items.append(newItem)
                     }
+                    self.presentModalStatusView()
                 } catch {
                     print("error - \(error)")
                 }

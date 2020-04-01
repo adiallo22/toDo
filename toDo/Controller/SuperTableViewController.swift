@@ -49,5 +49,11 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
     func delete(at indexpath: IndexPath) {
         
     }
+    
+    func presentModalStatusView() {
+        let modalView = AOModalStatusView(frame: self.view.bounds)
+        modalView.set(headline: "Added")
+        view.addSubview(modalView)
+    }
 
 }

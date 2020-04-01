@@ -75,6 +75,7 @@ class CTableViewController: SuperTableViewController {
             newCategory.color = UIColor.randomFlat().hexValue()
             self.tableView.reloadData()
             self.save(category: newCategory)
+            self.presentModalStatusView()
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
