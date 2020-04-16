@@ -9,14 +9,45 @@
 import UIKit
 import SwipeCellKit
 import AOModalStatus
+import UserNotifications
 
 class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegate {
     
     var cell : UITableViewCell?
+    
+    let center = UNUserNotificationCenter.current()
+    let contents = UNMutableNotificationContent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
+        notificationHandling()
+    }
+    
+    func notificationHandling() {
+        
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if error == nil && granted == true {
+                print("access granted")
+            }
+        }
+        //create the notification content
+        contents.title = "Notification1"
+        contents.body = "Body of the notification"
+        //create the trigger
+        let date = Date().addingTimeInterval(10)
+        let dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
+        //create a request
+        let uid = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uid, content: contents, trigger: trigger)
+        //register the request
+        center.add(request) { (error) in
+            if error != nil {
+                print("success")
+            }
+        }
+        
     }
     
     //MARK: - data source delegate
@@ -57,3 +88,4 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
 
 }
+

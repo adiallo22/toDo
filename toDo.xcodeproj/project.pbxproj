@@ -14,6 +14,8 @@
 		C0238B0523CA50EB00EB0769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0238B0323CA50EB00EB0769 /* LaunchScreen.storyboard */; };
 		C03DAAE12434F3F100FD780E /* AOModalStatus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; };
 		C03DAAE22434F3F100FD780E /* AOModalStatus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C03DC0752448E8F300E0A7F1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */; };
+		C03DC0772448E96000E0A7F1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC0762448E96000E0A7F1 /* SignupViewController.swift */; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
 		C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C27AF72435173E008320BE /* GoogleService-Info.plist */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
@@ -61,7 +63,10 @@
 		C0238B0623CA50EB00EB0769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C03DAADA2434F3D000FD780E /* AOModalStatusView-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "AOModalStatusView-master"; path = "../../Downloads/AOModalStatusView-master"; sourceTree = "<group>"; };
 		C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AOModalStatus.xcodeproj; path = "../../Downloads/AOModalStatusView-master/AOModalStatus.xcodeproj"; sourceTree = "<group>"; };
+		C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		C03DC0762448E96000E0A7F1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0C27AFA24351ABA008320BE /* toDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = toDo.entitlements; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C0FF777923E46B0B009C3CCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 		C0238AF723CA50E800EB0769 /* toDo */ = {
 			isa = PBXGroup;
 			children = (
+				C0C27AFA24351ABA008320BE /* toDo.entitlements */,
 				C0238AF823CA50E800EB0769 /* AppDelegate.swift */,
 				C0238AFA23CA50E800EB0769 /* SceneDelegate.swift */,
 				C0665C9223CEAB8800F17420 /* Model */,
@@ -144,6 +150,8 @@
 		C0665C8F23CEAB3A00F17420 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */,
+				C03DC0762448E96000E0A7F1 /* SignupViewController.swift */,
 				C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */,
 				C0FF775023E12B76009C3CCC /* CTableViewController.swift */,
 				C0238AFC23CA50E800EB0769 /* TodoController.swift */,
@@ -302,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03DC0772448E96000E0A7F1 /* SignupViewController.swift in Sources */,
 				C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */,
 				C0FF777C23EA6AA4009C3CCC /* SuperTableViewController.swift in Sources */,
 				C0238AFD23CA50E800EB0769 /* TodoController.swift in Sources */,
@@ -309,6 +318,7 @@
 				C0FF777823E46A7E009C3CCC /* Item.swift in Sources */,
 				C0238AFB23CA50E800EB0769 /* SceneDelegate.swift in Sources */,
 				C0FF777A23E46B0B009C3CCC /* Category.swift in Sources */,
+				C03DC0752448E8F300E0A7F1 /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +463,7 @@
 			baseConfigurationReference = 6BD1DF01213E8DC014FD757B /* Pods-toDo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = toDo/toDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNY957A2G6;
 				INFOPLIST_FILE = toDo/Info.plist;
@@ -472,6 +483,7 @@
 			baseConfigurationReference = 78082F0877856F3D953E2728 /* Pods-toDo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = toDo/toDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNY957A2G6;
 				INFOPLIST_FILE = toDo/Info.plist;

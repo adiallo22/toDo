@@ -11,6 +11,7 @@ import RealmSwift
 import SwipeCellKit
 import ChameleonFramework
 import AOModalStatus
+import Firebase
 
 class TodoController: SuperTableViewController {
     
@@ -114,19 +115,6 @@ class TodoController: SuperTableViewController {
         
     }
     
-    //MARK: - <#section heading#>
-    
-    //func save(item: Item) {
-        
-        //do {
-            //try realm.write {
-                //realm.add(item)
-            //}
-       // } catch {
-          //  print("error : \(error)")
-       // }
-        //self.tableView.reloadData()
-   // }
     
     func load() {
         

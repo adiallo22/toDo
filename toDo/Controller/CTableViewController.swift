@@ -11,6 +11,7 @@ import RealmSwift
 import SwipeCellKit
 import ChameleonFramework
 import AOModalStatus
+import Firebase
 
 class CTableViewController: SuperTableViewController {
     

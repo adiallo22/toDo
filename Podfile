@@ -10,5 +10,8 @@ pod 'RealmSwift'
 pod 'SwipeCellKit'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/viccalexander/Chameleon.git'
 pod 'Firebase/Analytics'
+pod 'Firebase/Firestore'
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
 
 end
