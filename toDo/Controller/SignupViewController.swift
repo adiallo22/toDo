@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
 
@@ -18,13 +19,21 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var lnameText: UITextField!
     @IBOutlet weak var fnameText: UITextField!
     
-    let auth = Auth.auth()
-    var db : Firestore?
+    private let auth = Auth.auth()
+    private var db : Firestore?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "SignUp"
+        navigationItem.largeTitleDisplayMode = .always
+    }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         errorLabel.alpha = 0
         db = Firestore.firestore()
+        
     }
     
     func checkError() -> String? {
@@ -54,7 +63,7 @@ class SignupViewController: UIViewController {
                 if error != nil {
                     self.setError("Could not sign you up")
                 } else {
-                    self.db?.collection("users").document("\(self.auth.currentUser?.uid)").setData(["first name":"\(fname)", "last name":"\(lname)", "email":"\(email)"])
+                    self.db?.collection("users").document("\(self.auth.currentUser!.uid)").setData(["first name":"\(fname)", "last name":"\(lname)", "email":"\(email)"])
                     self.performSegue(withIdentifier: "signupToWelcome", sender: self)
                 }
             }

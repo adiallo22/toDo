@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class IntroViewController: UIViewController {
 
@@ -16,13 +17,20 @@ class IntroViewController: UIViewController {
     @IBOutlet weak var pwdText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     
-    let auth = Auth.auth()
+    private let auth = Auth.auth()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Welcome"
+        navigationItem.largeTitleDisplayMode = .always
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         errorLabel.alpha = 0
+        
     }
     
 
