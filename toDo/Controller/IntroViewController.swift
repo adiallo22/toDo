@@ -12,6 +12,7 @@ import FirebaseFirestore
 
 class IntroViewController: UIViewController {
 
+    @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var pwdText: UITextField!
@@ -22,29 +23,16 @@ class IntroViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Welcome"
-        navigationItem.largeTitleDisplayMode = .always
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         errorLabel.alpha = 0
+        applyStyle()
         
     }
     
-
-    func checkError() -> String? {
-        if emailText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || pwdText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Fill in all the text field"
-        }
-        return nil
-    }
-    
-    func setError(_ err: String) {
-        errorLabel.text = err
-        errorLabel.alpha = 1
-    }
     
     @IBAction func loginPressed(_ sender: UIButton) {
         
@@ -67,8 +55,38 @@ class IntroViewController: UIViewController {
         transitionTo(here: "toSignup")
     }
     
+    
+    
+}
+
+//MARK: - <#section heading#>
+
+extension IntroViewController {
+    
+    func checkError() -> String? {
+        if emailText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || pwdText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Fill in all the text field"
+        }
+        return nil
+    }
+    
+    
+    func setError(_ err: String) {
+        errorLabel.text = err
+        errorLabel.alpha = 1
+    }
+    
+    
     func transitionTo(here : String) {
         performSegue(withIdentifier: here, sender: self)
+    }
+    
+    
+    func applyStyle() {
+        Style.styleHollowButton(btn)
+        Style.styleTextField(pwdText)
+        Style.styleTextField(emailText)
+        signupBtn.tintColor = .flatPurpleDark()
     }
     
 }

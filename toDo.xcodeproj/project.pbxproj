@@ -16,6 +16,7 @@
 		C03DAAE22434F3F100FD780E /* AOModalStatus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAAE02434F3DE00FD780E /* AOModalStatus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C03DC0752448E8F300E0A7F1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */; };
 		C03DC0772448E96000E0A7F1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC0762448E96000E0A7F1 /* SignupViewController.swift */; };
+		C03DC080244A02EB00E0A7F1 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC07F244A02EB00E0A7F1 /* Style.swift */; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
 		C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C27AF72435173E008320BE /* GoogleService-Info.plist */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
@@ -65,6 +66,7 @@
 		C03DAADB2434F3DE00FD780E /* AOModalStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AOModalStatus.xcodeproj; path = "../../Downloads/AOModalStatusView-master/AOModalStatus.xcodeproj"; sourceTree = "<group>"; };
 		C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		C03DC0762448E96000E0A7F1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C03DC07F244A02EB00E0A7F1 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0C27AFA24351ABA008320BE /* toDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = toDo.entitlements; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		C0665C9223CEAB8800F17420 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C03DC07F244A02EB00E0A7F1 /* Style.swift */,
 				C0FF777723E46A7E009C3CCC /* Item.swift */,
 				C0FF777923E46B0B009C3CCC /* Category.swift */,
 			);
@@ -319,6 +322,7 @@
 				C0238AFB23CA50E800EB0769 /* SceneDelegate.swift in Sources */,
 				C0FF777A23E46B0B009C3CCC /* Category.swift in Sources */,
 				C03DC0752448E8F300E0A7F1 /* IntroViewController.swift in Sources */,
+				C03DC080244A02EB00E0A7F1 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,20 +33,10 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         errorLabel.alpha = 0
         db = Firestore.firestore()
+        applyStyle()
         
     }
     
-    func checkError() -> String? {
-        if emailText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || pwdText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || fnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Fill in all the text field"
-        }
-        return nil
-    }
-    
-    func setError(_ err: String) {
-        errorLabel.text = err
-        errorLabel.alpha = 1
-    }
     
     @IBAction func signupPressed(_ sender: UIButton) {
         
@@ -69,6 +59,36 @@ class SignupViewController: UIViewController {
             }
 
         }
+        
+    }
+    
+}
+
+//MARK: - <#section heading#>
+
+extension SignupViewController {
+    
+    func checkError() -> String? {
+        if emailText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || pwdText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || fnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Fill in all the text field"
+        }
+        return nil
+    }
+    
+    
+    func setError(_ err: String) {
+        errorLabel.text = err
+        errorLabel.alpha = 1
+    }
+    
+    
+    func applyStyle() {
+        
+        Style.styleTextField(pwdText)
+        Style.styleTextField(emailText)
+        Style.styleTextField(fnameText)
+        Style.styleTextField(lnameText)
+        Style.styleFilledButton(btn)
         
     }
     
