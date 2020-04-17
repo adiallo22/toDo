@@ -54,7 +54,7 @@ class SignupViewController: UIViewController {
                     self.setError("Could not sign you up")
                 } else {
                     self.db?.collection("users").document("\(self.auth.currentUser!.uid)").setData(["first name":"\(fname)", "last name":"\(lname)", "email":"\(email)"])
-                    self.performSegue(withIdentifier: "signupToWelcome", sender: self)
+                    self.performSegue(withIdentifier: Constants.signupToWelcome, sender: self)
                 }
             }
 

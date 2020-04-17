@@ -44,7 +44,7 @@ class IntroViewController: UIViewController {
                 if error != nil {
                     self.setError("Wrong email or Password")
                 } else {
-                    self.transitionTo(here: "signinToWelcome")
+                    self.transitionTo(here: Constants.signinToWelcome)
                 }
             }
         }
@@ -52,10 +52,8 @@ class IntroViewController: UIViewController {
     }
     
     @IBAction func signupPressed(_ sender: UIButton) {
-        transitionTo(here: "toSignup")
+        transitionTo(here: Constants.toSignup)
     }
-    
-    
     
 }
 
@@ -83,10 +81,12 @@ extension IntroViewController {
     
     
     func applyStyle() {
+        
         Style.styleHollowButton(btn)
         Style.styleTextField(pwdText)
         Style.styleTextField(emailText)
         signupBtn.tintColor = .flatPurpleDark()
+        
     }
     
 }
