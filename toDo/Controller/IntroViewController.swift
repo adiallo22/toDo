@@ -27,6 +27,7 @@ class IntroViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         errorLabel.alpha = 0
         applyStyle()
@@ -88,6 +89,12 @@ extension IntroViewController {
         Style.styleTextField(emailText)
         signupBtn.tintColor = .flatPurpleDark()
         
+    }
+    
+    
+    //dismiss keyboard when touch anywhere in screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
 }

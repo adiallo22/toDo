@@ -92,4 +92,10 @@ extension SignupViewController {
         
     }
     
+    
+    //dismiss keyboard when touch anywhere in screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 }
