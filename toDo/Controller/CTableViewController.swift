@@ -67,10 +67,10 @@ class CTableViewController: SuperTableViewController {
         var tobeAdded = UITextField()
         let alert = UIAlertController(title: "New Category", message: "", preferredStyle: .alert)
         alert.addTextField { (alert) in
-            alert.placeholder = "Enter Category"
+            alert.placeholder = "Enter Category Title"
             tobeAdded = alert
         }
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let newCategory = Category()
             newCategory.name = tobeAdded.text!
             newCategory.color = UIColor.randomFlat().hexValue()
@@ -78,7 +78,9 @@ class CTableViewController: SuperTableViewController {
             self.save(category: newCategory)
             self.presentModalStatusView()
         }
-        alert.addAction(action)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
         
     }
