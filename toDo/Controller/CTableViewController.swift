@@ -83,6 +83,12 @@ class CTableViewController: SuperTableViewController {
         
     }
     
+    @IBAction func loggoutPressed(_ sender: UIBarButtonItem) {
+        
+        signMeOut()
+        
+    }
+    
 }
 
 //MARK: - <#section heading#>
@@ -111,19 +117,33 @@ extension CTableViewController {
         return cell
         
     }
+    
+    func signMeOut() {
+        if Auth.auth().currentUser != nil {
+            do {
+              try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+              print ("Error signing out: %@", signOutError)
+            }
+        }
+        performSegue(withIdentifier: Constants.backToWelcome, sender: self)
+    }
 
     //MARK: - table view delegate
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToList", sender: self)
+        performSegue(withIdentifier: Constants.goToList, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TodoController
-        if let indexpath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories?[indexpath.row]
+        if segue.identifier == Constants.goToList {
+            let destinationVC = segue.destination as! TodoController
+            if let indexpath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedCategory = categories?[indexpath.row]
+            }
         }
+        
     }
     
 }

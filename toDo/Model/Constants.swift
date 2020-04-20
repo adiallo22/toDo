@@ -13,5 +13,7 @@ struct Constants {
     static let signinToWelcome : String = "signinToWelcome"
     static let signupToWelcome : String = "signupToWelcome"
     static let toSignup : String = "toSignup"
+    static let goToList : String = "goToList"
+    static let backToWelcome : String = "backToWelcome"
     
 }
