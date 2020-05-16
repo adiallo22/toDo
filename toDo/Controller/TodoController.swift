@@ -37,7 +37,7 @@ class TodoController: SuperTableViewController {
         guard let barNav = navigationController?.navigationBar else {
             fatalError("navigation bar does not exist")
         }
-        sreachBar.barTintColor = barNav.barTintColor
+        sreachBar.barTintColor = view.backgroundColor
         navigationItem.title = selectedCategory?.name
     }
     
@@ -63,25 +63,6 @@ class TodoController: SuperTableViewController {
         
     }
     
-    //MARK: - table view delegate protocol
-       
-       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        do {
-            try realm.write {
-                if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-                    tableView.cellForRow(at: indexPath)?.accessoryType = .none
-                } else {
-                    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-                }
-            }
-        } catch {
-            print("error - \(error)")
-        }
-        tableView.reloadData()
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-       }
-    
     //MARK: - action
     
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
@@ -97,10 +78,14 @@ class TodoController: SuperTableViewController {
             if let curr = self.selectedCategory {
                 do {
                     try self.realm.write {
-                        let newItem = Item()
-                        newItem.title = toBeAdded.text!
-                        newItem.date = Date()
-                        curr.items.append(newItem)
+                        if toBeAdded.text! == "" {
+                            return
+                        } else {
+                            let newItem = Item()
+                            newItem.title = toBeAdded.text!
+                            newItem.date = Date()
+                            curr.items.append(newItem)
+                        }
                     }
                     self.presentModalStatusView()
                 } catch {
@@ -111,15 +96,8 @@ class TodoController: SuperTableViewController {
             self.tableView.reloadData()
         }
         alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         present(alert, animated: true, completion: nil)
-        
-    }
-    
-    
-    func load() {
-        
-        things = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
-        tableView.reloadData()
         
     }
     
@@ -137,6 +115,20 @@ class TodoController: SuperTableViewController {
     }
     
 }
+
+//MARK: - <#section heading#>
+
+extension TodoController {
+    
+    func load() {
+        
+        things = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        tableView.reloadData()
+        
+    }
+    
+}
+
 
 //MARK: - search bar
 
@@ -160,6 +152,29 @@ extension TodoController : UISearchBarDelegate {
         }
         
     }
+    
+}
+
+//MARK: - table view delegate protocol
+
+extension TodoController {
+       
+       override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        do {
+            try realm.write {
+                if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .none
+                } else {
+                    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                }
+            }
+        } catch {
+            print("error - \(error)")
+        }
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+       }
     
 }
 

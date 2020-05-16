@@ -42,7 +42,7 @@ class Style {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.flatPurpleDark().cgColor
         button.layer.cornerRadius = 25.0
-        button.tintColor = UIColor.flatPurpleDark()
+        button.tintColor = UIColor.white
     }
     
     static func isPasswordValid(_ password : String) -> Bool {

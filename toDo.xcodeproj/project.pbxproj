@@ -70,7 +70,6 @@
 		C03DC07F244A02EB00E0A7F1 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C03DC082244A106B00E0A7F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C0C27AFA24351ABA008320BE /* toDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = toDo.entitlements; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C0FF777923E46B0B009C3CCC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -121,7 +120,6 @@
 		C0238AF723CA50E800EB0769 /* toDo */ = {
 			isa = PBXGroup;
 			children = (
-				C0C27AFA24351ABA008320BE /* toDo.entitlements */,
 				C0238AF823CA50E800EB0769 /* AppDelegate.swift */,
 				C0238AFA23CA50E800EB0769 /* SceneDelegate.swift */,
 				C0665C9223CEAB8800F17420 /* Model */,

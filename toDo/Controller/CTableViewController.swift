@@ -23,10 +23,62 @@ class CTableViewController: SuperTableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 78.0
         load()
+        navigationController?.navigationBar.tintColor = .white
     }
     
     
-    //MARK: - section heading
+
+    //MARK: - action
+    
+    @IBAction func addToDo(_ sender: UIBarButtonItem) {
+        
+        var tobeAdded = UITextField()
+        let alert = UIAlertController(title: "New Category", message: "", preferredStyle: .alert)
+        alert.addTextField { (alert) in
+            alert.placeholder = "Enter Category Title"
+            tobeAdded = alert
+        }
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            if tobeAdded.text == "" {
+                return
+            } else {
+                self.createNewCathegory(tobeAdded)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+//    @IBAction func loggoutPressed(_ sender: UIBarButtonItem) {
+//
+//        signMeOut()
+//
+//    }
+    
+    override func delete(at indexPath : IndexPath) {
+        if let tobedeleted = self.categories?[indexPath.row] {
+          do {
+              try self.realm.write {
+                  self.realm.delete(tobedeleted)
+              }
+          } catch{
+              print("error deleting - \(error)")
+          }
+          tableView.reloadData()
+          }
+    }
+    
+}
+
+
+//MARK: - persistance
+
+
+extension CTableViewController {
+    
     func save(category: Category) {
         
         do {
@@ -47,53 +99,9 @@ class CTableViewController: SuperTableViewController {
         
     }
     
-    override func delete(at indexPath : IndexPath) {
-        if let tobedeleted = self.categories?[indexPath.row] {
-          do {
-              try self.realm.write {
-                  self.realm.delete(tobedeleted)
-              }
-          } catch{
-              print("error deleting - \(error)")
-          }
-          tableView.reloadData()
-          }
-    }
-
-    //MARK: - action
-
-    @IBAction func addToDo(_ sender: UIBarButtonItem) {
-        
-        var tobeAdded = UITextField()
-        let alert = UIAlertController(title: "New Category", message: "", preferredStyle: .alert)
-        alert.addTextField { (alert) in
-            alert.placeholder = "Enter Category Title"
-            tobeAdded = alert
-        }
-        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newCategory = Category()
-            newCategory.name = tobeAdded.text!
-            newCategory.color = UIColor.randomFlat().hexValue()
-            self.tableView.reloadData()
-            self.save(category: newCategory)
-            self.presentModalStatusView()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(addAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func loggoutPressed(_ sender: UIBarButtonItem) {
-        
-        signMeOut()
-        
-    }
-    
 }
 
-//MARK: - <#section heading#>
+//MARK: - table view
 
 extension CTableViewController {
     
@@ -120,18 +128,8 @@ extension CTableViewController {
         
     }
     
-    func signMeOut() {
-        if Auth.auth().currentUser != nil {
-            do {
-              try Auth.auth().signOut()
-            } catch let signOutError as NSError {
-              print ("Error signing out: %@", signOutError)
-            }
-        }
-        performSegue(withIdentifier: Constants.backToWelcome, sender: self)
-    }
 
-    //MARK: - table view delegate
+    //MARK: - segues
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -146,6 +144,33 @@ extension CTableViewController {
             }
         }
         
+    }
+    
+}
+
+
+//MARK: - <#section heading#>
+
+extension CTableViewController {
+    
+    fileprivate func createNewCathegory(_ container: UITextField) {
+        let newCategory = Category()
+        newCategory.name = container.text!
+        newCategory.color = UIColor.randomFlat().hexValue()
+        self.tableView.reloadData()
+        self.save(category: newCategory)
+        self.presentModalStatusView()
+    }
+    
+    func signMeOut() {
+        if Auth.auth().currentUser != nil {
+            do {
+              try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+              print ("Error signing out: %@", signOutError)
+            }
+        }
+        performSegue(withIdentifier: Constants.backToWelcome, sender: self)
     }
     
 }

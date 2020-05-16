@@ -34,7 +34,6 @@ class SignupViewController: UIViewController {
         errorLabel.alpha = 0
         db = Firestore.firestore()
         applyStyle()
-        hideKeyboardWhenTappedAround()
         
     }
     
@@ -93,14 +92,11 @@ extension SignupViewController {
         
     }
     
+
     
     //dismiss keyboard when touch anywhere in screen
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        view.endEditing(true)
-//    }
-    
-    func hideKeyboardWhenTappedAround() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing))
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
 }
