@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k4g-Br-fmZ">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -240,6 +240,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dX-KA-IUq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="64" y="220"/>
+        </scene>
+        <!--Add New ItemVC-->
+        <scene sceneID="0or-E8-9UC">
+            <objects>
+                <viewController id="fTK-xV-YHP" customClass="AddNewItemVC" customModule="toDo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R4m-1d-vye">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-oW-qOs">
+                                <rect key="frame" x="20" y="164" width="374" height="496"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Sz8-OC-Ymb">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="190"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoZ-Gf-enO">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="4ba-p2-SAH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfl-ur-0dO">
+                                                <rect key="frame" x="0.0" y="70" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaD-Ip-FEm">
+                                                <rect key="frame" x="0.0" y="140" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="CaD-Ip-FEm" firstAttribute="height" secondItem="GoZ-Gf-enO" secondAttribute="height" id="WcC-fK-PcL"/>
+                                            <constraint firstItem="yfl-ur-0dO" firstAttribute="height" secondItem="GoZ-Gf-enO" secondAttribute="height" id="qat-vl-o7P"/>
+                                        </constraints>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-DX-I7i">
+                                        <rect key="frame" x="0.0" y="210" width="374" height="216"/>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnF-rh-7DH">
+                                        <rect key="frame" x="0.0" y="446" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Nxw-bb-DdL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addPressed:" destination="fTK-xV-YHP" eventType="touchUpInside" id="zMa-9V-Kk0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Z1P-DC-S3v" firstAttribute="trailing" secondItem="sp2-oW-qOs" secondAttribute="trailing" constant="20" id="4oB-2h-fdP"/>
+                            <constraint firstItem="sp2-oW-qOs" firstAttribute="leading" secondItem="Z1P-DC-S3v" secondAttribute="leading" constant="20" id="qGZ-wh-MQr"/>
+                            <constraint firstItem="sp2-oW-qOs" firstAttribute="top" secondItem="Z1P-DC-S3v" secondAttribute="top" constant="120" id="wkr-OD-QIn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z1P-DC-S3v"/>
+                    </view>
+                    <connections>
+                        <outlet property="ItemField" destination="yfl-ur-0dO" id="vTN-4x-1Mp"/>
+                        <outlet property="addBtn" destination="bnF-rh-7DH" id="Xu4-zq-QbP"/>
+                        <outlet property="dueDate" destination="oFS-DX-I7i" id="A6h-Ko-F7I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5G-K7-Ulq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63.768115942028992" y="873.88392857142856"/>
         </scene>
         <!--List-->
         <scene sceneID="AFr-by-zvy">
