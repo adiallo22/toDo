@@ -246,11 +246,11 @@
             <objects>
                 <viewController id="fTK-xV-YHP" customClass="AddNewItemVC" customModule="toDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R4m-1d-vye">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-oW-qOs">
-                                <rect key="frame" x="20" y="164" width="374" height="496"/>
+                                <rect key="frame" x="20" y="120" width="374" height="496"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Sz8-OC-Ymb">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="190"/>
@@ -283,6 +283,9 @@
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-DX-I7i">
                                         <rect key="frame" x="0.0" y="210" width="374" height="216"/>
+                                        <connections>
+                                            <action selector="datePicked:" destination="fTK-xV-YHP" eventType="valueChanged" id="gBl-7K-oNj"/>
+                                        </connections>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnF-rh-7DH">
                                         <rect key="frame" x="0.0" y="446" width="374" height="50"/>
@@ -314,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5G-K7-Ulq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63.768115942028992" y="873.88392857142856"/>
+            <point key="canvasLocation" x="1212" y="902"/>
         </scene>
         <!--List-->
         <scene sceneID="AFr-by-zvy">
@@ -357,6 +360,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sreachBar" destination="R29-fA-moW" id="I20-70-xtV"/>
+                        <segue destination="fTK-xV-YHP" kind="presentation" identifier="toNewItem" id="1ol-Vi-aJQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSd-6W-zbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

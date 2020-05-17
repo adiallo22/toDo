@@ -15,5 +15,6 @@ struct Constants {
     static let toSignup : String = "toSignup"
     static let goToList : String = "goToList"
     static let backToWelcome : String = "backToWelcome"
+    static let toNewItem : String = "toNewItem"
     
 }
