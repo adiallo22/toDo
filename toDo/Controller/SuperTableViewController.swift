@@ -10,17 +10,19 @@ import UIKit
 import SwipeCellKit
 import AOModalStatus
 import UserNotifications
+import ChameleonFramework
 
 class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegate {
     
     var cell : UITableViewCell?
     
-    let center = UNUserNotificationCenter.current()
-    let contents = UNMutableNotificationContent()
+//    let center = UNUserNotificationCenter.current()
+//    let contents = UNMutableNotificationContent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        //view.backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: .init(), andColors: [UIColor.red, UIColor.blue])
+        //view.backgroundColor = .lightGray
         //navigationController?.navigationBar.backgroundColor = view.backgroundColor
         //notificationHandling()
     }
@@ -86,10 +88,6 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
         let modalView = AOModalStatusView(frame: self.view.bounds)
         modalView.set(headline: "Added")
         view.addSubview(modalView)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
 
 }

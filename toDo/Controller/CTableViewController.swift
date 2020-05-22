@@ -52,11 +52,10 @@ class CTableViewController: SuperTableViewController {
         
     }
     
-//    @IBAction func loggoutPressed(_ sender: UIBarButtonItem) {
-//
-//        signMeOut()
-//
-//    }
+    //ignore keyboard when touched outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     override func delete(at indexPath : IndexPath) {
         if let tobedeleted = self.categories?[indexPath.row] {
@@ -129,7 +128,7 @@ extension CTableViewController {
     }
     
 
-    //MARK: - segues
+//MARK: - segues
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,7 +148,7 @@ extension CTableViewController {
 }
 
 
-//MARK: - <#section heading#>
+//MARK: - new category
 
 extension CTableViewController {
     

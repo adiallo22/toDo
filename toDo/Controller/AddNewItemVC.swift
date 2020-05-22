@@ -16,10 +16,9 @@ class AddNewItemVC: UIViewController {
 
     @IBOutlet weak var ItemField: UITextField!
     @IBOutlet weak var addBtn: UIButton!
-    @IBOutlet weak var dueDate: UIDatePicker!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var date : Date?
-    
     var delegate : NewItemDelegate?
     
     override func viewDidLoad() {
@@ -27,29 +26,56 @@ class AddNewItemVC: UIViewController {
 
         // Do any additional setup after loading the view.
         styleTheAddButton()
+        errorLabel.alpha = 0
     }
     
 
     @IBAction func addPressed(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            guard let date = self.date else {
-                print("No date picked")
-                return
-            }
-            if let item = self.ItemField.text {
-                self.delegate?.setInformation(date: date, item: item)
-            } else {
-                print("Item field cannot be empty")
+        
+        let error = checkForError()
+        if error != nil {
+            setError(error!)
+        } else {
+            self.dismiss(animated: true) {
+                guard let date = self.date else {
+                    self.setError("No date picked")
+                    return
+                }
+                if let item = self.ItemField.text {
+                    self.delegate?.setInformation(date: date, item: item)
+                } else {
+                    self.setError("error adding new item")
+                }
             }
         }
     }
+    
     @IBAction func datePicked(_ sender: UIDatePicker) {
-        print("\(sender.date)")
         date = sender.date
+    }
+    
+    //ignore keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+           view.endEditing(true)
+    }
+    
+    func checkForError() -> String? {
+        if ItemField.text == "" {
+            return "Insert new item before adding"
+        }
+        return nil
+    }
+    
+    func setError(_ error : String) {
+        self.errorLabel.text = error
+        self.errorLabel.alpha = 1
     }
     
 
 }
+
+
+//MARK: - style
 
 extension AddNewItemVC {
     

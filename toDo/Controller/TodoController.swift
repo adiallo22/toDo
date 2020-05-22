@@ -41,6 +41,11 @@ class TodoController: SuperTableViewController {
         sreachBar.barTintColor = view.backgroundColor
         navigationItem.title = selectedCategory?.name
     }
+    
+    //ignore keyboard when touched outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
     
     //MARK: - action

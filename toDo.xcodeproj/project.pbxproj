@@ -19,6 +19,7 @@
 		C03DC080244A02EB00E0A7F1 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC07F244A02EB00E0A7F1 /* Style.swift */; };
 		C03DC083244A106B00E0A7F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC082244A106B00E0A7F1 /* Constants.swift */; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
+		C0C1F133247823AD00930955 /* itemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F132247823AD00930955 /* itemCell.swift */; };
 		C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C27AF72435173E008320BE /* GoogleService-Info.plist */; };
 		C0F81EDD2471BA120004318F /* AddNewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F81EDC2471BA120004318F /* AddNewItemVC.swift */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
@@ -70,6 +71,7 @@
 		C03DC0762448E96000E0A7F1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C03DC07F244A02EB00E0A7F1 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C03DC082244A106B00E0A7F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C0C1F132247823AD00930955 /* itemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemCell.swift; sourceTree = "<group>"; };
 		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0F81EDC2471BA120004318F /* AddNewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemVC.swift; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C0238AFE23CA50E800EB0769 /* Main.storyboard */,
+				C0C1F132247823AD00930955 /* itemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F81EDD2471BA120004318F /* AddNewItemVC.swift in Sources */,
+				C0C1F133247823AD00930955 /* itemCell.swift in Sources */,
 				C03DC0772448E96000E0A7F1 /* SignupViewController.swift in Sources */,
 				C03DC083244A106B00E0A7F1 /* Constants.swift in Sources */,
 				C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */,
