@@ -11,7 +11,7 @@ import RealmSwift
 import SwipeCellKit
 import ChameleonFramework
 import AOModalStatus
-import Firebase
+//import Firebase
 
 class CTableViewController: SuperTableViewController {
     
@@ -23,7 +23,7 @@ class CTableViewController: SuperTableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 78.0
         load()
-        navigationController?.navigationBar.tintColor = .white
+//        navigationItem.titleView?.tintColor = .flatBlack()
     }
     
     
@@ -46,8 +46,8 @@ class CTableViewController: SuperTableViewController {
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        alert.addAction(addAction)
         alert.addAction(cancelAction)
+        alert.addAction(addAction)
         present(alert, animated: true, completion: nil)
         
     }
@@ -79,7 +79,6 @@ class CTableViewController: SuperTableViewController {
 extension CTableViewController {
     
     func save(category: Category) {
-        
         do {
             try realm.write {
                 realm.add(category)
@@ -88,14 +87,11 @@ extension CTableViewController {
             print("error : \(error)")
         }
         tableView.reloadData()
-        
     }
     
     func load() {
-        
         categories = realm.objects(Category.self)
         tableView.reloadData()
-        
     }
     
 }
@@ -119,7 +115,7 @@ extension CTableViewController {
             guard let color = UIColor(hexString: existCategory.color) else {
                 fatalError("no color")
             }
-            cell.textLabel?.text = existCategory.name
+            cell.textLabel?.text = existCategory.name.uppercased()
             cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
             cell.backgroundColor = color
         }
@@ -161,15 +157,15 @@ extension CTableViewController {
         self.presentModalStatusView()
     }
     
-    func signMeOut() {
-        if Auth.auth().currentUser != nil {
-            do {
-              try Auth.auth().signOut()
-            } catch let signOutError as NSError {
-              print ("Error signing out: %@", signOutError)
-            }
-        }
-        performSegue(withIdentifier: Constants.backToWelcome, sender: self)
-    }
+//    func signMeOut() {
+//        if Auth.auth().currentUser != nil {
+//            do {
+//              try Auth.auth().signOut()
+//            } catch let signOutError as NSError {
+//              print ("Error signing out: %@", signOutError)
+//            }
+//        }
+//        performSegue(withIdentifier: Constants.backToWelcome, sender: self)
+//    }
     
 }

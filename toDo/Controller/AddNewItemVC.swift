@@ -29,6 +29,12 @@ class AddNewItemVC: UIViewController {
         errorLabel.alpha = 0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        ItemField.resignFirstResponder()
+        view.backgroundColor = UIColor.init(gradientStyle: .leftToRight, withFrame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), andColors: [.flatWhite(), .flatGray()])
+    }
+    
 
     @IBAction func addPressed(_ sender: UIButton) {
         
@@ -36,16 +42,12 @@ class AddNewItemVC: UIViewController {
         if error != nil {
             setError(error!)
         } else {
+            guard let date = self.date else {
+                self.setError("No date picked")
+                return
+            }
             self.dismiss(animated: true) {
-                guard let date = self.date else {
-                    self.setError("No date picked")
-                    return
-                }
-                if let item = self.ItemField.text {
-                    self.delegate?.setInformation(date: date, item: item)
-                } else {
-                    self.setError("error adding new item")
-                }
+                self.delegate?.setInformation(date: date, item: self.ItemField.text!)
             }
         }
     }
@@ -68,7 +70,7 @@ class AddNewItemVC: UIViewController {
     
     func setError(_ error : String) {
         self.errorLabel.text = error
-        self.errorLabel.alpha = 1
+        self.errorLabel.alpha = 1.0
     }
     
 

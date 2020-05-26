@@ -17,7 +17,9 @@ class TodoController: SuperTableViewController {
     
     @IBOutlet weak var sreachBar: UISearchBar!
     
-    var things : Results<Item>?
+    var dueDate : String?
+    
+    var lists : Results<Item>?
     
     let realm = try! Realm()
     
@@ -41,15 +43,10 @@ class TodoController: SuperTableViewController {
         sreachBar.barTintColor = view.backgroundColor
         navigationItem.title = selectedCategory?.name
     }
-    
-    //ignore keyboard when touched outside
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
 
     
     //MARK: - action
-    
+
     @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: Constants.toNewItem, sender: self)
@@ -57,7 +54,7 @@ class TodoController: SuperTableViewController {
     }
     
     override func delete(at indexPath : IndexPath) {
-        if let tobedeleted = self.things?[indexPath.row] {
+        if let tobedeleted = self.lists?[indexPath.row] {
           do {
               try self.realm.write {
                   self.realm.delete(tobedeleted)
@@ -84,10 +81,8 @@ class TodoController: SuperTableViewController {
 extension TodoController {
     
     func load() {
-        
-        things = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        lists = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
-        
     }
     
 }
@@ -95,13 +90,12 @@ extension TodoController {
 
 //MARK: - search bar
 
-
 extension TodoController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        things = things?.filter("title CONTAINS[cd] %@", searchBar.text!)
-        things?.sorted(byKeyPath: "date", ascending: false)
+        lists = lists?.filter("title CONTAINS[cd] %@", searchBar.text!)
+        lists?.sorted(byKeyPath: "date", ascending: false)
         tableView.reloadData()
         
     }
@@ -122,7 +116,6 @@ extension TodoController : UISearchBarDelegate {
 
 //MARK: - new item delegate
 
-
 extension TodoController : NewItemDelegate {
     
         func setInformation(date: Date, item: String) {
@@ -130,6 +123,7 @@ extension TodoController : NewItemDelegate {
                 do {
                     try self.realm.write {
                         let newItem = Item()
+                        dueDate = "\(date)"
                         newItem.title = item
                         newItem.date = date
                         curr.items.append(newItem)
@@ -146,24 +140,22 @@ extension TodoController : NewItemDelegate {
 
 
 //MARK: - table view data source and delegate
-
 extension TodoController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return things?.count ?? 1
+        return lists!.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if let item = things?[indexPath.row] {
+        if let item = lists?[indexPath.row] {
             cell.textLabel?.text = item.title
-            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(Float(indexPath.row)/Float(things!.count))) {
+            cell.detailTextLabel?.text = dueDate
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(Float(indexPath.row)/Float(lists!.count))) {
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
             }
-        } else {
-            cell.textLabel?.text = "No Item"
         }
         return cell
         
@@ -181,12 +173,9 @@ extension TodoController {
      } catch {
          print("error - \(error)")
      }
-     tableView.reloadData()
+     //tableView.reloadData()
      tableView.deselectRow(at: indexPath, animated: true)
      
     }
     
 }
-
-
-

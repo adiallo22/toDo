@@ -250,7 +250,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sp2-oW-qOs">
-                                <rect key="frame" x="20" y="20" width="374" height="540"/>
+                                <rect key="frame" x="20" y="120" width="374" height="566"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Sz8-OC-Ymb">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="190"/>
@@ -264,7 +264,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new item here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfl-ur-0dO">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfl-ur-0dO">
                                                 <rect key="frame" x="0.0" y="70" width="374" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -281,7 +281,7 @@
                                             <constraint firstItem="yfl-ur-0dO" firstAttribute="height" secondItem="GoZ-Gf-enO" secondAttribute="height" id="qat-vl-o7P"/>
                                         </constraints>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-DX-I7i">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-DX-I7i">
                                         <rect key="frame" x="0.0" y="210" width="374" height="216"/>
                                         <connections>
                                             <action selector="datePicked:" destination="fTK-xV-YHP" eventType="valueChanged" id="gBl-7K-oNj"/>
@@ -298,26 +298,30 @@
                                             <action selector="addPressed:" destination="fTK-xV-YHP" eventType="touchUpInside" id="zMa-9V-Kk0"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ila-rn-eRD">
-                                        <rect key="frame" x="0.0" y="516" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbm-KT-m5t">
+                                        <rect key="frame" x="0.0" y="516" width="374" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="mbm-KT-m5t" firstAttribute="height" secondItem="bnF-rh-7DH" secondAttribute="height" id="WTB-xg-6xY"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Z1P-DC-S3v" firstAttribute="trailing" secondItem="sp2-oW-qOs" secondAttribute="trailing" constant="20" id="4oB-2h-fdP"/>
                             <constraint firstItem="sp2-oW-qOs" firstAttribute="leading" secondItem="Z1P-DC-S3v" secondAttribute="leading" constant="20" id="qGZ-wh-MQr"/>
-                            <constraint firstItem="sp2-oW-qOs" firstAttribute="top" secondItem="Z1P-DC-S3v" secondAttribute="top" constant="20" id="wkr-OD-QIn"/>
+                            <constraint firstItem="sp2-oW-qOs" firstAttribute="top" secondItem="Z1P-DC-S3v" secondAttribute="top" constant="120" id="wkr-OD-QIn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z1P-DC-S3v"/>
                     </view>
                     <connections>
                         <outlet property="ItemField" destination="yfl-ur-0dO" id="vTN-4x-1Mp"/>
                         <outlet property="addBtn" destination="bnF-rh-7DH" id="Xu4-zq-QbP"/>
+                        <outlet property="errorLabel" destination="mbm-KT-m5t" id="lbS-cw-AEC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5G-K7-Ulq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -341,27 +345,12 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="65" id="5I6-Fc-cBq" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
-                                <rect key="frame" x="0.0" y="72" width="414" height="65"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5I6-Fc-cBq" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5I6-Fc-cBq" id="Sri-0C-34U">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsR-Zh-Ufh">
-                                            <rect key="frame" x="379.5" y="0.0" width="34.5" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="5bd-5K-L0U"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="OsR-Zh-Ufh" secondAttribute="trailing" id="B0F-Pp-GeK"/>
-                                        <constraint firstItem="OsR-Zh-Ufh" firstAttribute="top" secondItem="Sri-0C-34U" secondAttribute="top" id="bnX-pi-bUL"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -380,7 +369,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sreachBar" destination="R29-fA-moW" id="I20-70-xtV"/>
-                        <segue destination="fTK-xV-YHP" kind="presentation" identifier="toNewItem" id="1ol-Vi-aJQ"/>
+                        <segue destination="fTK-xV-YHP" kind="presentation" identifier="toNewItem" id="ThI-ZP-CVD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSd-6W-zbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -406,7 +395,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2c-jI-CUP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-848" y="-273"/>
+            <point key="canvasLocation" x="-730" y="220"/>
         </scene>
     </scenes>
     <resources>

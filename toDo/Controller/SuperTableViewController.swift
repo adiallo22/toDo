@@ -1,3 +1,4 @@
+
 //
 //  SuperTableViewController.swift
 //  toDo
@@ -5,26 +6,23 @@
 //  Created by Abdul Diallo on 2/4/20.
 //  Copyright © 2020 Abdul Diallo. All rights reserved.
 //
-
 import UIKit
 import SwipeCellKit
 import AOModalStatus
 import UserNotifications
-import ChameleonFramework
 
 class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegate {
     
     var cell : UITableViewCell?
     
-//    let center = UNUserNotificationCenter.current()
-//    let contents = UNMutableNotificationContent()
+    let center = UNUserNotificationCenter.current()
+    let contents = UNMutableNotificationContent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: .init(), andColors: [UIColor.red, UIColor.blue])
-        //view.backgroundColor = .lightGray
-        //navigationController?.navigationBar.backgroundColor = view.backgroundColor
-        //notificationHandling()
+        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor.init(gradientStyle: .leftToRight, withFrame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), andColors: [.flatWhite(), .flatGray()])
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
 //    func notificationHandling() {
@@ -71,16 +69,23 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
                 self.delete(at: indexPath)
             }
+        let modifyAction = SwipeAction(style: .default, title: "Modify") { (action, indexPath) in
+            print("modified...")
+        }
 
         // customize the action appearance
         deleteAction.image = UIImage(named: "delete")
 
-        return [deleteAction]
+        return [deleteAction, modifyAction]
     }
     
     //MARK: - delete
     
-    func delete(at indexpath: IndexPath) {
+    func delete(at indexpath : IndexPath) {
+        
+    }
+    
+    func modify(at indexpath : IndexPath) {
         
     }
     
@@ -89,6 +94,9 @@ class SuperTableViewController: UITableViewController, SwipeTableViewCellDelegat
         modalView.set(headline: "Added")
         view.addSubview(modalView)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
 }
-
