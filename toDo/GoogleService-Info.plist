@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>297423231151-obo73mst24p8jhgh1k9qb5rdd81od0kj.apps.googleusercontent.com</string>
+	<string>1084274473577-opksrj3rj6ck83r4as227m8j5kt6grnj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.297423231151-obo73mst24p8jhgh1k9qb5rdd81od0kj</string>
+	<string>com.googleusercontent.apps.1084274473577-opksrj3rj6ck83r4as227m8j5kt6grnj</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBwpsNGqyN77_lscpYhg2cBUDNcfaq0cCo</string>
+	<string>AIzaSyAxkWTG9F5k6Up_TiZDHTzKwqP9nTQS4RU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>297423231151</string>
+	<string>1084274473577</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>abdulCo.toDo</string>
 	<key>PROJECT_ID</key>
-	<string>to-do-7f3e2</string>
+	<string>to-dov</string>
 	<key>STORAGE_BUCKET</key>
-	<string>to-do-7f3e2.appspot.com</string>
+	<string>to-dov.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:297423231151:ios:22c500cc497311e9a4dc5a</string>
+	<string>1:1084274473577:ios:34a6042a2f72e08f2fc0f8</string>
 	<key>DATABASE_URL</key>
-	<string>https://to-do-7f3e2.firebaseio.com</string>
+	<string>https://to-dov.firebaseio.com</string>
 </dict>
 </plist>

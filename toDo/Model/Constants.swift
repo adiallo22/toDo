@@ -16,5 +16,13 @@ struct Constants {
     static let goToList : String = "goToList"
     static let backToWelcome : String = "backToWelcome"
     static let toNewItem : String = "toNewItem"
+    static let quoteCell : String = "QuoteCell"
+    static let toNewQuote : String = "toNewQuote"
+    static let tabBar : String = "ToDoTabBar"
+    
+    struct Keys {
+        static let email = "email"
+        static let password = "password"
+    }
     
 }

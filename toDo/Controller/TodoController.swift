@@ -23,6 +23,8 @@ class TodoController: SuperTableViewController {
     
     let realm = try! Realm()
     
+    let defaults = UserDefaults.standard
+    
     var selectedCategory : Category? {
         didSet{
             load()
@@ -173,9 +175,23 @@ extension TodoController {
      } catch {
          print("error - \(error)")
      }
-     //tableView.reloadData()
+     tableView.reloadData()
      tableView.deselectRow(at: indexPath, animated: true)
      
+    }
+
+    
+    func saveDone(status : Bool) {
+        do {
+            try realm.write {
+                if let x = tableView.indexPathForSelectedRow?.row {
+                    lists?[x].done = lists![x].done
+                }
+            }
+        }  catch {
+                print("error")
+        }
+        tableView.reloadData()
     }
     
 }

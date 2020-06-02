@@ -42,13 +42,17 @@ class Style {
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.flatPurpleDark().cgColor
         button.layer.cornerRadius = 25.0
-        button.tintColor = UIColor.white
+        button.tintColor = UIColor.black
     }
     
     static func isPasswordValid(_ password : String) -> Bool {
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
+    }
+    
+    func themeColor(view : UIView) {
+        view.backgroundColor = UIColor.init(gradientStyle: .leftToRight, withFrame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), andColors: [.flatWhite(), .flatGray()])
     }
     
 }

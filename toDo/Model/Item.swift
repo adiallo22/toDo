@@ -15,4 +15,11 @@ class Item: Object {
     @objc dynamic var date : Date?
     //relationship
     let parentCategory = LinkingObjects(fromType: Category.self, property: "items")
+    
+    func returnTitle() -> String {
+        if self.done == true {
+            return "\(title) ❤️"
+        }
+        return title
+    }
 }

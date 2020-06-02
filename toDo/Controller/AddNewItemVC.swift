@@ -23,7 +23,7 @@ class AddNewItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        moveKepboardUp()
         // Do any additional setup after loading the view.
         styleTheAddButton()
         errorLabel.alpha = 0
@@ -56,11 +56,6 @@ class AddNewItemVC: UIViewController {
         date = sender.date
     }
     
-    //ignore keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-           view.endEditing(true)
-    }
-    
     func checkForError() -> String? {
         if ItemField.text == "" {
             return "Insert new item before adding"
@@ -86,5 +81,33 @@ extension AddNewItemVC {
         addBtn.backgroundColor = .systemRed
         addBtn.tintColor = .black
     }
+    
+}
+
+
+//MARK: - keyboard
+
+extension AddNewItemVC {
+    
+    func moveKepboardUp() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    //dismiss keyboard when touch anywhere in screen
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+        @objc func keyboardWillShow(notification: NSNotification) {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= 100
+                }
+        }
+
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
     
 }

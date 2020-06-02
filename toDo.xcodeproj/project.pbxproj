@@ -19,7 +19,12 @@
 		C03DC080244A02EB00E0A7F1 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC07F244A02EB00E0A7F1 /* Style.swift */; };
 		C03DC083244A106B00E0A7F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC082244A106B00E0A7F1 /* Constants.swift */; };
 		C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0238AF823CA50E800EB0769 /* AppDelegate.swift */; };
-		C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C27AF72435173E008320BE /* GoogleService-Info.plist */; };
+		C09B5B29247F5613004FFC54 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09B5B28247F5613004FFC54 /* Quote.swift */; };
+		C09B5B2C247F7715004FFC54 /* NewQuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09B5B2B247F7715004FFC54 /* NewQuoteVC.swift */; };
+		C09B5B31248082A1004FFC54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C09B5B30248082A1004FFC54 /* GoogleService-Info.plist */; };
+		C0C1F198247DE62800930955 /* QuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F197247DE62700930955 /* QuotesVC.swift */; };
+		C0C1F19A247DE72100930955 /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F199247DE72100930955 /* QuoteCell.swift */; };
+		C0C1F19C247DE78700930955 /* ToDoTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1F19B247DE78700930955 /* ToDoTabBar.swift */; };
 		C0F81EDD2471BA120004318F /* AddNewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F81EDC2471BA120004318F /* AddNewItemVC.swift */; };
 		C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF775023E12B76009C3CCC /* CTableViewController.swift */; };
 		C0FF777823E46A7E009C3CCC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF777723E46A7E009C3CCC /* Item.swift */; };
@@ -70,7 +75,12 @@
 		C03DC0762448E96000E0A7F1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C03DC07F244A02EB00E0A7F1 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C03DC082244A106B00E0A7F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C0C27AF72435173E008320BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C09B5B28247F5613004FFC54 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		C09B5B2B247F7715004FFC54 /* NewQuoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuoteVC.swift; sourceTree = "<group>"; };
+		C09B5B30248082A1004FFC54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0C1F197247DE62700930955 /* QuotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesVC.swift; sourceTree = "<group>"; };
+		C0C1F199247DE72100930955 /* QuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
+		C0C1F19B247DE78700930955 /* ToDoTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTabBar.swift; sourceTree = "<group>"; };
 		C0F81EDC2471BA120004318F /* AddNewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemVC.swift; sourceTree = "<group>"; };
 		C0FF775023E12B76009C3CCC /* CTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableViewController.swift; sourceTree = "<group>"; };
 		C0FF777723E46A7E009C3CCC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -129,7 +139,7 @@
 				C0665C8F23CEAB3A00F17420 /* Controller */,
 				C0238B0123CA50EB00EB0769 /* Assets.xcassets */,
 				C0238B0323CA50EB00EB0769 /* LaunchScreen.storyboard */,
-				C0C27AF72435173E008320BE /* GoogleService-Info.plist */,
+				C09B5B30248082A1004FFC54 /* GoogleService-Info.plist */,
 				C0238B0623CA50EB00EB0769 /* Info.plist */,
 			);
 			path = toDo;
@@ -147,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C0238AFE23CA50E800EB0769 /* Main.storyboard */,
+				C0C1F199247DE72100930955 /* QuoteCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,8 +167,11 @@
 			children = (
 				C03DC0742448E8F300E0A7F1 /* IntroViewController.swift */,
 				C03DC0762448E96000E0A7F1 /* SignupViewController.swift */,
+				C0C1F19B247DE78700930955 /* ToDoTabBar.swift */,
 				C0FF777B23EA6AA4009C3CCC /* SuperTableViewController.swift */,
 				C0FF775023E12B76009C3CCC /* CTableViewController.swift */,
+				C0C1F197247DE62700930955 /* QuotesVC.swift */,
+				C09B5B2B247F7715004FFC54 /* NewQuoteVC.swift */,
 				C0238AFC23CA50E800EB0769 /* TodoController.swift */,
 				C0F81EDC2471BA120004318F /* AddNewItemVC.swift */,
 			);
@@ -168,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C03DC07F244A02EB00E0A7F1 /* Style.swift */,
+				C09B5B28247F5613004FFC54 /* Quote.swift */,
 				C0FF777723E46A7E009C3CCC /* Item.swift */,
 				C0FF777923E46B0B009C3CCC /* Category.swift */,
 				C03DC082244A106B00E0A7F1 /* Constants.swift */,
@@ -262,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0238B0523CA50EB00EB0769 /* LaunchScreen.storyboard in Resources */,
-				C0C27AF92435173E008320BE /* GoogleService-Info.plist in Resources */,
+				C09B5B31248082A1004FFC54 /* GoogleService-Info.plist in Resources */,
 				C0238B0223CA50EB00EB0769 /* Assets.xcassets in Resources */,
 				C0238B0023CA50E800EB0769 /* Main.storyboard in Resources */,
 			);
@@ -319,13 +334,18 @@
 			files = (
 				C0F81EDD2471BA120004318F /* AddNewItemVC.swift in Sources */,
 				C03DC0772448E96000E0A7F1 /* SignupViewController.swift in Sources */,
+				C09B5B2C247F7715004FFC54 /* NewQuoteVC.swift in Sources */,
+				C0C1F198247DE62800930955 /* QuotesVC.swift in Sources */,
 				C03DC083244A106B00E0A7F1 /* Constants.swift in Sources */,
+				C09B5B29247F5613004FFC54 /* Quote.swift in Sources */,
+				C0C1F19A247DE72100930955 /* QuoteCell.swift in Sources */,
 				C0665C9323CEB01200F17420 /* AppDelegate.swift in Sources */,
 				C0FF777C23EA6AA4009C3CCC /* SuperTableViewController.swift in Sources */,
 				C0238AFD23CA50E800EB0769 /* TodoController.swift in Sources */,
 				C0FF775123E12B76009C3CCC /* CTableViewController.swift in Sources */,
 				C0FF777823E46A7E009C3CCC /* Item.swift in Sources */,
 				C0238AFB23CA50E800EB0769 /* SceneDelegate.swift in Sources */,
+				C0C1F19C247DE78700930955 /* ToDoTabBar.swift in Sources */,
 				C0FF777A23E46B0B009C3CCC /* Category.swift in Sources */,
 				C03DC0752448E8F300E0A7F1 /* IntroViewController.swift in Sources */,
 				C03DC080244A02EB00E0A7F1 /* Style.swift in Sources */,
@@ -482,6 +502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = abdulCo.toDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -503,6 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = abdulCo.toDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

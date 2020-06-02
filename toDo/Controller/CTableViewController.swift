@@ -22,8 +22,10 @@ class CTableViewController: SuperTableViewController {
         
         super.viewDidLoad()
         tableView.rowHeight = 78.0
+        if realm.isEmpty {
+            createExistingCategory()
+        }
         load()
-//        navigationItem.titleView?.tintColor = .flatBlack()
     }
     
     
@@ -103,7 +105,7 @@ extension CTableViewController {
     //data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return categories?.count ?? 1
+        return categories?.count ?? 7
         
     }
     
@@ -116,6 +118,7 @@ extension CTableViewController {
                 fatalError("no color")
             }
             cell.textLabel?.text = existCategory.name.uppercased()
+            cell.detailTextLabel?.text = "\(existCategory.items.count)"
             cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
             cell.backgroundColor = color
         }
@@ -155,6 +158,23 @@ extension CTableViewController {
         self.tableView.reloadData()
         self.save(category: newCategory)
         self.presentModalStatusView()
+    }
+    
+    func addGenericCategories(name : String) {
+        let newCategory = Category()
+        newCategory.name = name
+        newCategory.color = UIColor.randomFlat().hexValue()
+        save(category: newCategory)
+    }
+    
+    func createExistingCategory() {
+        addGenericCategories(name: "HOME")
+        addGenericCategories(name: "EDUCATION")
+        addGenericCategories(name: "ENTERTAINMENT")
+        addGenericCategories(name: "HEALTH")
+        addGenericCategories(name: "INVESTMENT")
+        addGenericCategories(name: "PROJECT")
+        addGenericCategories(name: "GROCERIES")
     }
     
 //    func signMeOut() {

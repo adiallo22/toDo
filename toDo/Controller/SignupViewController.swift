@@ -22,18 +22,14 @@ class SignupViewController: UIViewController {
     private let auth = Auth.auth()
     private var db : Firestore?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = "SignUp"
-        navigationItem.largeTitleDisplayMode = .always
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         errorLabel.alpha = 0
         db = Firestore.firestore()
         applyStyle()
+        moveKepboardUp()
+        fnameText.becomeFirstResponder()
         
     }
     
@@ -54,12 +50,12 @@ class SignupViewController: UIViewController {
                     self.setError("Could not sign you up")
                 } else {
                     self.db?.collection("users").document("\(self.auth.currentUser!.uid)").setData(["first name":"\(fname)", "last name":"\(lname)", "email":"\(email)"])
-                    self.performSegue(withIdentifier: Constants.signupToWelcome, sender: self)
+                    UserDefaults.standard.set(email, forKey: Constants.Keys.email)
+                    UserDefaults.standard.set(pwd, forKey: Constants.Keys.password)
+                    self.transitionWelcome()
                 }
             }
-
         }
-        
     }
     
 }
@@ -67,6 +63,12 @@ class SignupViewController: UIViewController {
 //MARK: - <#section heading#>
 
 extension SignupViewController {
+    
+    func transitionWelcome() {
+        let main : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = main.instantiateViewController(withIdentifier: "ToDoTabBar") as! ToDoTabBar
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
     
     func checkError() -> String? {
         if emailText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || pwdText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || fnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lnameText.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
@@ -83,20 +85,39 @@ extension SignupViewController {
     
     
     func applyStyle() {
-        
         Style.styleTextField(pwdText)
         Style.styleTextField(emailText)
         Style.styleTextField(fnameText)
         Style.styleTextField(lnameText)
         Style.styleFilledButton(btn)
-        
-    }
-    
-
-    
-    //dismiss keyboard when touch anywhere in screen
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
 }
+
+//MARK: - keyboard
+
+extension SignupViewController {
+    
+    func moveKepboardUp() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    //dismiss keyboard when touch anywhere in screen
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+        @objc func keyboardWillShow(notification: NSNotification) {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= 100
+                }
+        }
+
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    
+}
+

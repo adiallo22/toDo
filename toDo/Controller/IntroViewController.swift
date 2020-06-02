@@ -20,6 +20,8 @@ class IntroViewController: UIViewController {
     
     private let auth = Auth.auth()
     
+   // let defaults = UserDefaults.standard
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Welcome"
@@ -31,6 +33,7 @@ class IntroViewController: UIViewController {
         super.viewDidLoad()
         errorLabel.alpha = 0
         applyStyle()
+        setAutomaticLogin()
         
     }
     
@@ -45,16 +48,23 @@ class IntroViewController: UIViewController {
                 if error != nil {
                     self.setError("Wrong email or Password")
                 } else {
-                    self.transitionTo(here: Constants.signinToWelcome)
+                    self.transitionTo(here: "")
                 }
             }
         }
-        //keybo
         
     }
     
     @IBAction func signupPressed(_ sender: UIButton) {
         transitionTo(here: Constants.toSignup)
+    }
+    
+    func setAutomaticLogin() {
+        if let email = UserDefaults.standard.string(forKey: Constants.Keys.email), let password = UserDefaults.standard.string(forKey: Constants.Keys.password) {
+            print(email)
+            emailText.text = "\(email)"
+            pwdText.text = "\(password)"
+        }
     }
     
 }
@@ -78,13 +88,20 @@ extension IntroViewController {
     
     
     func transitionTo(here : String) {
-        performSegue(withIdentifier: here, sender: self)
+        if here == "" {
+            let main : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = main.instantiateViewController(withIdentifier: "ToDoTabBar") as! ToDoTabBar
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        } else {
+            performSegue(withIdentifier: here, sender: self)
+        }
     }
     
     
     func applyStyle() {
         
         Style.styleHollowButton(btn)
+        Style.styleFilledButton(signupBtn)
         Style.styleTextField(pwdText)
         Style.styleTextField(emailText)
         signupBtn.tintColor = .flatPurpleDark()
