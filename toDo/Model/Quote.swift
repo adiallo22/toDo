@@ -19,8 +19,8 @@ class Quote {
     init(snapshot : DataSnapshot) {
         ref = snapshot.ref
         if let value = snapshot.value as? [String:Any] {
-            quote = value["quote"] as! String
-            author = value["author"] as! String
+            quote = value["quote"] as? String
+            author = value["author"] as? String
             likes = value["likes"] as! Int
         }
     }
