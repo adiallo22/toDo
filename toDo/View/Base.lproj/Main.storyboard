@@ -174,7 +174,6 @@
                         <constraints>
                             <constraint firstItem="VC5-L4-jml" firstAttribute="top" secondItem="zzQ-o3-aHj" secondAttribute="bottom" constant="62" id="1ir-82-Zeg"/>
                             <constraint firstItem="eSo-TI-AfE" firstAttribute="top" secondItem="vjj-cs-8T8" secondAttribute="top" id="OwT-oG-Frh"/>
-                            <constraint firstItem="zzQ-o3-aHj" firstAttribute="top" secondItem="vjj-cs-8T8" secondAttribute="top" constant="104" id="Pol-Na-Bev"/>
                             <constraint firstItem="zzQ-o3-aHj" firstAttribute="leading" secondItem="ViU-nT-hyS" secondAttribute="leading" constant="126.5" id="S6V-Zv-fnn"/>
                             <constraint firstItem="eSo-TI-AfE" firstAttribute="leading" secondItem="ViU-nT-hyS" secondAttribute="leading" id="UVa-eA-ZQU"/>
                             <constraint firstItem="ViU-nT-hyS" firstAttribute="trailing" secondItem="VC5-L4-jml" secondAttribute="trailing" constant="20" id="V01-Yy-7Jg"/>
